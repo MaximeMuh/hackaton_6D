@@ -1,6 +1,6 @@
 :root {
   --body-background-color: #f5f6f8;
-  --main-background-color: #ffffff;
+  --main-background-color: #f5f6f8;
   --main-color: #2a303b;
   --max-body-width: 700px;
   --border-color: #cccccc;
@@ -17,16 +17,18 @@ body {
   padding: 0;
   margin: 0;
   font-family: sans-serif;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 
 body.dark-mode {
   --body-background-color: #333;
-  --main-background-color: #222;
+  --main-background-color: #333;
   --main-color: #fff;
   --border-color: #444;
   --secondary-color: #3498db;
 }
+
 .main-container {
   max-width: var(--max-body-width);
   min-height: 100vh;
@@ -34,6 +36,7 @@ body.dark-mode {
   color: var(--main-color);
   padding: 50px;
   margin: 0 auto;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .header {
@@ -91,6 +94,7 @@ body.dark-mode {
   padding: 5px;
   border-radius: 5px;
   background-color: var(--main-background-color);
+  color: var(--main-color);
 }
 
 .button:hover,
@@ -169,4 +173,3 @@ body.dark-mode {
     transform: translate(calc(var(--loader-bullet-size) * 2), 0);
   }
 }
-
