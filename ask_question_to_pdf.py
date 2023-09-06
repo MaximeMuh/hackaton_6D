@@ -107,7 +107,8 @@ def chat_ask_question():
 
 def verif_reponse(rep, texte):
     return gpt3_completion(
-        "je vais te donner un texte, une question sur le texte et ma réponse à la question, dis moi si j'ai bien répondu, en disant vrai"
+        "je vais te donner un texte, une question sur le texte et ma réponse" +
+        "à la question, dis moi si j'ai bien répondu, en disant vrai"
         + "ou faux et donne la reponse exacte,"
         + document
         + texte
