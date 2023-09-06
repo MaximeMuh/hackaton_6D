@@ -24,8 +24,6 @@ from flask import request
 @app.route("/prompt", methods=["POST"])
 def prompt():
     message = {}
-
-    #   message ['answer']=
     message["answer"] = ask_question_to_pdf.ask_question_to_pdf(request.form["prompt"])
     return message
 
@@ -34,4 +32,13 @@ def prompt():
 def quest():
     message = {}
     message["answer"] = ask_question_to_pdf.chat_ask_question()
+    return message
+
+
+@app.route("/answer", methods=["POST"])
+def ans():
+    message = {}
+    message["answer"] = ask_question_to_pdf.verif_reponse(
+        request.form["prompt"], request.form["question"]
+    )
     return message
