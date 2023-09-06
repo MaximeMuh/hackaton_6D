@@ -79,10 +79,17 @@ def split_text(text, chunk_size=5000):
     return chunks
 
 
+# code pour fichier pdf
 filename = os.path.join(os.path.dirname(__file__), "filename.pdf")
-document = read_pdf(filename)
-chunks = split_text(document)
-print(type(chunks))
+# document = read_pdf(filename)
+# chunks = split_text(document)
+# print(type(chunks))
+
+# code pour fichier txt
+with open(
+    "C:/Users/maxim/Desktop/hackaton_6D/livre.txt", "r", encoding="utf-8"
+) as file:
+    document = file.read()
 
 
 def gpt3_completion(texte):
@@ -91,9 +98,6 @@ def gpt3_completion(texte):
     )
     a = rep["choices"][0]["message"]["content"]
     return a
-
-
-# texte = "résume le texte "
 
 
 def ask_question_to_pdf(texte):
@@ -107,9 +111,13 @@ def chat_ask_question():
 
 def verif_reponse(rep, texte):
     return gpt3_completion(
-        "je vais te donner un texte, une question sur le texte et ma réponse"
-        + "à la question, dis moi si j'ai bien répondu, en disant vrai"
-        + "ou faux et donne la reponse exacte,"
+        "je vais te donner un texte, une question sur le texte et ma réponse,"
+        + " dis moi si j'ai bien répondu à la question que je"
+        + " te donne, en disant VRAI"
+        + "ou FAUX et donne la reponse exacte. Si ma réponse"
+        + " n'a pas de rapport avec la question, dit moi FAUX et donne la"
+        + " bonne réponse précise et concise à la question"
+        + "voila le document puis la question puis ma réponse :"
         + document
         + texte
         + rep
