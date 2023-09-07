@@ -3,6 +3,9 @@ const submitButton = document.getElementById("submit-button");
 const questionButton = document.getElementById("question-button");
 const messagesContainer = document.getElementById("messages-container");
 const darkModeButton = document.getElementById("darkModeButton");
+const questionsimple = document.getElementById("question-simple-button");
+
+
 const body = document.body;
 
 const appendHumanMessage = (message) => {
@@ -40,6 +43,15 @@ const handlePrompt = async (event) => {
     data.append("question", questionButton.dataset.question);
     delete questionButton.dataset.question;
     questionButton.classList.remove("hidden");
+    questionsimple.classList.remove("hidden");
+    submitButton.innerHTML = "Message";
+  }
+  if (questionsimple.dataset.question !== undefined) {
+    url = "/answer";
+    data.append("question", questionsimple.dataset.question);
+    delete questionsimple.dataset.question;
+    questionsimple.classList.remove("hidden");
+    questionButton.classList.remove("hidden");
     submitButton.innerHTML = "Message";
   }
   prompt = data.get("prompt")
@@ -67,12 +79,14 @@ const handleQuestionClick = async (event) => {
 
     questionButton.dataset.question = question;
     questionButton.classList.add("hidden");
+    questionsimple.classList.add("hidden");
     submitButton.innerHTML = "Répondre à la question";
     return question;
   });
 };
 
 questionButton.addEventListener("click", handleQuestionClick);
+
 
 
 darkModeButton.addEventListener("click", () => {
@@ -86,3 +100,22 @@ darkModeButton.addEventListener("click", () => {
     darkModeButton.textContent = "Dark Mode";
   }
 });
+
+const handlesimple = async (event) => {
+  appendAIMessage(async () => {
+    const response = await fetch("/simplequestion", {
+      method: "GET",
+    });
+    const result = await response.json();
+    const question = result.answer;
+
+    questionsimple.dataset.question = question;
+    questionsimple.classList.add("hidden");
+    questionButton.classList.add("hidden");
+
+    submitButton.innerHTML = "Répondre à la question";
+    return question;
+  });
+};
+
+questionsimple.addEventListener("click", handlesimple);

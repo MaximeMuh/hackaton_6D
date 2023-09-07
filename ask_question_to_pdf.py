@@ -109,6 +109,11 @@ def chat_ask_question():
     return gpt3_completion(document + a)
 
 
+def chat_ask_question_simple():
+    a = "pose moi une question très simple, basique sur ce texte "
+    return gpt3_completion(document + a)
+
+
 def verif_reponse(rep, texte):
     return gpt3_completion(
         "je vais te donner un texte, une question sur le texte et ma réponse,"

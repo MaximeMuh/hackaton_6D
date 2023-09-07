@@ -31,6 +31,13 @@ def quest():
     return message
 
 
+@app.route("/simplequestion", methods=["GET"])
+def questsimple():
+    message = {}
+    message["answer"] = ask_question_to_pdf.chat_ask_question_simple()
+    return message
+
+
 @app.route("/answer", methods=["POST"])
 def ans():
     message = {}
