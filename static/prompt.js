@@ -89,10 +89,7 @@ questionButton.addEventListener("click", handleQuestionClick);
 
 
 darkModeButton.addEventListener("click", () => {
-  // Basculez la classe dark-mode sur le corps
   body.classList.toggle("dark-mode");
-
-  // Mettez à jour le texte du bouton en fonction du mode actuel
   if (body.classList.contains("dark-mode")) {
     darkModeButton.textContent = "White Mode";
   } else {

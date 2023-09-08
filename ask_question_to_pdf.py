@@ -80,16 +80,16 @@ def split_text(text, chunk_size=5000):
 
 
 # code pour fichier pdf
-# filename = os.path.join(os.path.dirname(__file__), "filename.pdf")
-# document = read_pdf(filename)
-# chunks = split_text(document)
-# print(type(chunks))
+filename = os.path.join(os.path.dirname(__file__), "filename.pdf")
+document = read_pdf(filename)
+chunks = split_text(document)
+print(type(chunks))
 
 # code pour fichier txt
-with open(
-    "C:/Users/maxim/Desktop/hackaton_6D/livre.txt", "r", encoding="utf-8"
-) as file:
-    document = file.read()
+# with open(
+#     "C:/Users/maxim/Desktop/hackaton_6D/livre.txt", "r", encoding="utf-8"
+# ) as file:
+#     document = file.read()
 
 
 def gpt3_completion(texte):
@@ -105,12 +105,12 @@ def ask_question_to_pdf(texte):
 
 
 def chat_ask_question():
-    a = "pose moi une question sur ce texte "
+    a = "pose moi une question un peu technique sur ce texte "
     return gpt3_completion(document + a)
 
 
 def chat_ask_question_simple():
-    a = "pose moi une question très simple, basique sur ce texte "
+    a = "pose moi une question simple, basique sur ce texte "
     return gpt3_completion(document + a)
 
 
