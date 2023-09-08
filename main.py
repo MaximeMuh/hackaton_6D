@@ -2,6 +2,7 @@ import ask_question_to_pdf
 from flask import Flask
 from flask import request
 from flask import render_template
+from flask import send_file
 
 app = Flask(__name__)
 
@@ -45,3 +46,19 @@ def ans():
         request.form["prompt"], request.form["question"]
     )
     return message
+
+
+@app.route("/pdf")
+def pdf():
+    path = "C:/Users/maxim/Desktop/hackaton_6D/filename.pdf"
+    return send_file(path, as_attachment=True)
+
+
+# @app.route("/txt")
+# def txt():
+#     path = "C:/Users/maxim/Desktop/hackaton_6D/livre.txt"
+#     return send_file(path, as_attachment=True)
+
+
+if __name__ == "_main_":
+    app.run()

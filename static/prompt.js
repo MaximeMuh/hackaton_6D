@@ -4,8 +4,7 @@ const questionButton = document.getElementById("question-button");
 const messagesContainer = document.getElementById("messages-container");
 const darkModeButton = document.getElementById("darkModeButton");
 const questionsimple = document.getElementById("question-simple-button");
-
-
+const textButton = document.getElementById("textButton");
 const body = document.body;
 
 const appendHumanMessage = (message) => {
@@ -119,3 +118,11 @@ const handlesimple = async (event) => {
 };
 
 questionsimple.addEventListener("click", handlesimple);
+
+document.getElementById("textButton").addEventListener("click", function () {
+  window.location.href = "/pdf";
+});
+
+// document.getElementById("textButton").addEventListener("click", function () {
+//   window.location.href = "/txt";
+// });
